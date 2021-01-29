@@ -1,0 +1,23 @@
+.card {
+    /* background-image: -moz-repeating-radial-gradient(); */
+    background-color: lightblue;
+}
+
+.header {
+    background: navy;
+    color: oldlace;
+}
+
+.historyList {
+    background: paleturquoise;
+
+}
+
+#news {
+    font-weight: bolder;
+    font-size: large;
+    font-stretch: extra-expanded;
+}
+button.link { 
+    background:none;border:none;
+ }
