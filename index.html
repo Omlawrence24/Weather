@@ -9,8 +9,7 @@
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<!-- <button class = "searchBtn"></button> -->
-
+<body>
 <div class="card text-center">
   <div id="news" class="card-header">
     Fox Bebe News
@@ -22,66 +21,60 @@
     </div>
   </div>
   <div class="card-footer text-muted">
-
   </div>
 </div>
-<input id="search-value" type="text">
-<button type="submit" class="searchBtn"> search</button>
-
-<body>
   <!-- this the history list -->
-  <div class="row">
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-body">
-          <div class="card" style="width: 21rem;">
-            <ul id="historyList" class="list-group list-group-flush">
-              <!-- input for the users city inputs-->
-              <!-- <button id="link">atlanta</button> -->
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- this is the centerbox that contains the current weather searched -->
-    <div class="col-md-9">
-      <div id="conditions" class="card">
-        <div class="card-body">
-          <h1 class="card-title">Weather Conditions</h1>
-          <h5 class="card-title" id="weatherList"></h5>
-          <p class="card-text">.......</p>
-          <p class="card-text">........</p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- this the bottom row of the 5 day forcast -->
-  <div class="row">
-    <div class="col">
+  <div class="container-fluid">
+    <div class="row">
       <div class="col-md-3">
-        <div class="card" id="forecast">
+        <div class="card">
+          <input id="search-value" type="text">
+          <button type="submit" class="searchBtn"> search</button>
+        </div>
+        <div class="card">
           <div class="card-body">
-            <h5 class="card-title">5-Day Forecast</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <p class="card-text">
-            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-              <div class="card-header">Header</div>
-              <div class="card-body">
-                <h5 class="card-title">Primary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                  card's content.</p>
-              </div>
-              </p>
+            <div class="card" style="width: 21rem;">
+              <ul id="historyList" class="list-group list-group-flush">
+                <!-- input for the users city inputs-->
+                <!-- <button id="link">atlanta</button> -->
+              </ul>
             </div>
           </div>
         </div>
-
       </div>
-
+      <!-- this is the centerbox that contains the current weather searched -->
+      <div class="col-md-9">
+        <div id="conditions" class="card">
+          <div class="card-body">
+            <h1 class="card-title">Weather Conditions</h1>
+            <h5 class="card-title" id="weatherList"></h5>
+            <p class="card-text">.......</p>
+            <p class="card-text">........</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  </div>
+    <!-- this the bottom row of the 5 day forcast -->
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="card" >
+          <h5 class="card-title">5-Day Forecast</h5>
+          <p class="card-text"> </p>
+          <div id="forecast-row" class="row" >
+            <!-- <div class="col card text-white bg-primary mx-2" style="max-width: 18rem;">
+              <h4 class="card-header"> 1/13/2021 </h4>
+              <div id="forecast" class="card-body"> 
+                <h4 class="card-title"> sunny</h4>
+                <h3 class="card-text">Temp: 86.84</h3>
+                <h3 class="card-text">Humidity: 43%</h3>
+              </div>
+              </p>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- <p class="card-text">
   <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
