@@ -2,6 +2,11 @@
     /* background-image: -moz-repeating-radial-gradient(); */
     background-color: lightblue;
 }
+#fox {
+font-size: x-large;
+font-weight: bolder;
+
+}
 
 .header {
     background: navy;
