@@ -2,27 +2,29 @@
     /* background-image: -moz-repeating-radial-gradient(); */
     background-color: lightblue;
 }
+/*THIS AFFECTS THE HEADER INFO */
 #fox {
 font-size: x-large;
 font-weight: bolder;
 
 }
-
+/*THIS AFFECTS THE HEADER INFO */
 .header {
     background: navy;
     color: oldlace;
 }
-
+/*THIS AFFECTS THE HISTORY LIST */
 .historyList {
     background: paleturquoise;
 
 }
-
+/*THIS AFFECTS THE FONT */
 #news {
     font-weight: bolder;
     font-size: large;
     font-stretch: extra-expanded;
 }
+/*THIS EFFECTS THE BUTTONS CREATED BY PREVIOUS CITY SEARCHES */
 button.link { 
     background:none;border:none;
  }

@@ -1,13 +1,17 @@
 
-// 
-// 
+// THIS STARTS MY CODE CONSISTS OF MAIN BUTTON/FUNCTION CALLS/SEARCH VALUE
 $(document).ready(function () {
     $(".searchBtn").on("click", function () {
         var searchValue = $("#search-value").val()
+        //CLEARS THE INPUT FIELD
         $("#search-value").val("")
+        //CALLS AJAX AND WEATHER OUTPUT
         getWeather(searchValue);
+        //CREATE WEATHER BUTTON
         createWeatherBtn(searchValue)
     });
+
+    //LOCAL STORAGE ALLOW THE SITE TO GRAB PREVIOUS SEARCHES
  if (localStorage.getItem("history") != null) {
 JSON.parse(localStorage.getItem("history")).forEach(cityBtn => {
     createWeatherBtn(cityBtn)
@@ -17,44 +21,42 @@ JSON.parse(localStorage.getItem("history")).forEach(cityBtn => {
 
 
 });
-
+// CREATES THE BUTTON W/ IN HISTORY LIST TO ALLOW CLICK REACTION
  function createWeatherBtn (city) {
   $("#historyList").append(`<button onclick="javascript:getWeather('${city}')" >${city}</button>`)   
 
  }
 
-
+// INITIAL API FUNCTION THAT "GETS" WEATHERLIST INFO 
 function getWeather(searchValue) {
 
+    //THE INITIAL API W/ INTERCHANGLEABLE CITY VALUE CACANATED 
     $.ajax({
         url: "https://api.openweathermap.org/data/2.5/forecast?q=" + searchValue + "&appid=cd110b8f7f9c9303ea50c9e68d261cb3",
         method: "GET",
         dataType: "json",
     }).then(function (response) {
         console.log(response);
-        storeHistory(searchValue);
 
+        //THIS STORES THE USER INPUT IN LOCAL STORAGE
+        storeHistory(searchValue);
+        // CALLS THE MAIN INFO FOR CITY WEATHER
         forecast(response.city.coord.lat, response.city.coord.lon);
-       // $("<button>").appendTo(historyList).text(searchValue);
+        //CLEARS THE MAIN CARD SO THAT A NEW CITY APPEARS IN MAIN CARD 
         $("#weatherList").empty();
+        
         $("<h3>").appendTo(weatherList).text(response.city.name);
         $("<p>").appendTo(weatherList).text("Temperature:  " + response.list[0].main.temp);
         $("<p>").appendTo(weatherList).text("Humidity:  " + response.list[0].main.humidity);
         $("<p>").appendTo(weatherList).text("Wind Speed:  " + response.list[0].wind.speed + " MPH");
+        
          
     });
 }
-
-// $("#historyList").on("click", function () {
-//     getWeather()
-//     // var historySlot = searchValue.appendTo(weatherList)
-//     // document.historySlot.append(weatherList)
-// });
-
-
-
+//THIS FUNCTION CREATES MY 5 FORECASTS
 function forecast(lat, lon) {
     
+    //CUSTOM API CALL FOR UV INDEX AND FORECAST DETAILS
     var urlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=f14d9b76ec9372ef96ee61a166296635`;
     $.ajax({
         url: urlForecast,
@@ -64,13 +66,18 @@ function forecast(lat, lon) {
         console.log("forecast data:");
         console.log(response);
        renderWeather(response)
-
+       //THIS CREATES THE UV ON PAGE 
+     $("<p>").appendTo(weatherList).text("UV Index:  " + response.current.uvi);
     });
 }
 
-
+// THIS FUNCTION CREATE THE ACT OF PENDING THE FIVE FORECASTS ON PAGE 
 function renderWeather (weatherData) {
     $("#forecast-row").empty()
+
+    // CREATED A FOR LOOP THAT WOULD ONLY DISPLAY UP TO 5
+    //CREATED A PARA TO ENABLE MULTI VALUES TO PASS THROUGH FUNCTION 
+    // THIS METHOD LITERALLY RECREATES THE CARD REPEAT 
   weatherData.daily.splice(0,5).forEach(weather => {
       $("#forecast-row").append(`
         <div class="col card text-white bg-primary mx-2" style="max-width: 18rem;">
@@ -87,21 +94,18 @@ function renderWeather (weatherData) {
     `)
   })
     
-    // $("<p>").appendTo(".card-header").text(weatherData.city)
-    // $("<p>").appendTo($("#forecast")).text(weatherData.daily[0].humidity)
-    // $("<p>").appendTo($("#forecast")).text(weatherData.daily[0].temp.day)
-    // $(forecastBox).appendTo($("#forecast"));
-
 }
 
 
 
 
 
+// THIS FUNCTION STORES ALL DATA TO THE LOCAL STORAGE AND ALLOWS  PREVIOUS CITIES TO 
+//STAY ON PAGE AND CREATE A HISTORY LIST
+//THIS ALSO IS CREATING AN ARRAY THAT PUSHES THIS SEARCHES INTO AN ARRAY WHICH ENABLES YOU PULL THEM OUT LATER
 
 function storeHistory(city) {
 
-    //var searchBtn = $(".searchBtn");
     var storeCity = localStorage.getItem("history") != null ? JSON.parse(localStorage.getItem("history")) : []
     storeCity.push(city)
     localStorage.setItem("history", JSON.stringify(storeCity));
